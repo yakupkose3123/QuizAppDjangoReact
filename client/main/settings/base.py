@@ -31,11 +31,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'dj_rest_auth',
     'rest_framework.authtoken',
-    'drf_yasg', 
+    'drf_yasg',
+    'nested_admin', 
 
     #MyApps:
     'users',
-    # 'flight',
+    'QuizApp',
     
     
 ]

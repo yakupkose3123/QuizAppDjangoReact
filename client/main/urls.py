@@ -32,6 +32,6 @@ urlpatterns = [
 
     # apps
     path("users/", include("users.urls")),
-    # path("flight/", include("flight.urls")),
+    path("quiz/", include("QuizApp.urls")),
 ]
 
