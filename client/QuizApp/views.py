@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets
-from .models import Question, Answer, Quiz, Category
-from .serializers import CategorySerealizer , QuizSerealizer, AnswerSerializer
+from .models import Question, Quiz, Category
+from .serializers import CategorySerealizer , QuizSerealizer, QuestionSerializer
 from .permission import IsStafforReadOnly
 
 
@@ -15,6 +15,14 @@ class CategoryView(viewsets.ModelViewSet):
 class QuizView(viewsets.ModelViewSet):
     queryset = Quiz.objects.all()
     serializer_class = QuizSerealizer
+    permission_classes = (IsStafforReadOnly,)  #! For permission
+
+
+
+
+class QuestionView(viewsets.ModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
     permission_classes = (IsStafforReadOnly,)  #! For permission
 
 

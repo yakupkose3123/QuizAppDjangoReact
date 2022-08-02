@@ -2,7 +2,7 @@ from unicodedata import category
 from django.db import models
 from pkg_resources import require
 
-# Create your models here.
+
 class Category(models.Model):
     name = models.CharField(max_length=50, verbose_name="Category Name")
 
@@ -50,7 +50,7 @@ class Question(models.Model):
 class Answer(models.Model):
 
     text = models.CharField(max_length=100, verbose_name="Answer Text")    
-    updated_date = models.DateTimeField(auto_now=True)
+    # updated_date = models.DateTimeField(auto_now=True)
     is_right = models.BooleanField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
