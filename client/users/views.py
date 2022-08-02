@@ -1,6 +1,3 @@
-from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.generics import CreateAPIView
 from django.contrib.auth.models import User
 from.serializers import RegisterSerializer
@@ -19,9 +16,11 @@ class RegisterView(CreateAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
         data = serializer.data
-        token = Token.objects.get(user=user)  #O Token ı al
-        data["token"] = token.key #data nın içerisine koy
-        
+        if Token.objects.filter(user=user).exists(): #DB de bu user a bir Token var ise 
+            token = Token.objects.get(user=user)  #O Token ı al
+            data["token"] = token.key #data nın içerisine koy
+        # else:
+        #     data["token"] = "No token created for this user.... :))" 
         headers = self.get_success_headers(serializer.data)
         return Response(data, status=status.HTTP_201_CREATED, headers=headers)
     

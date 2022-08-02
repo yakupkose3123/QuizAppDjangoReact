@@ -6,8 +6,8 @@ from dj_rest_auth.serializers import TokenSerializer
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
-        required=True, 
-        validators=[validators.UniqueValidator(queryset=User.objects.all())] 
+        required=True, #! Zorunlu alan yaptık
+        validators=[validators.UniqueValidator(queryset=User.objects.all())] #! Unique olmasını sağladık
     )
     password = serializers.CharField(
         write_only=True, #!sadece write yaparken bu çeğrılacak, get de yok
