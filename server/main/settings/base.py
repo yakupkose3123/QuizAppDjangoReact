@@ -36,7 +36,7 @@ INSTALLED_APPS = [
 
     #MyApps:
     'users',
-    'QuizApp',
+    'QuizApp', # "QuizApp.apps.QuizappConfig" bunu da yazabiliriz
     
     
 ]

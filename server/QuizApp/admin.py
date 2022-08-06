@@ -4,9 +4,9 @@ from .models import Category, Quiz, Answer, Question
 
 class AnswerAdmin(nested_admin.NestedTabularInline):
     model = Answer
-    extra = 1
+    extra = 1 
 
-class QuestionAdmin(nested_admin.NestedStackedInline):
+class QuestionAdmin(nested_admin.NestedTabularInline):
     model = Question
     extra = 1
     inlines = [AnswerAdmin,]    

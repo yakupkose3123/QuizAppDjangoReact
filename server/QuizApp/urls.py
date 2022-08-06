@@ -1,16 +1,14 @@
 from django.urls import path, include
-from rest_framework import routers 
-from .views import CategoryView, QuizView, QuestionView
-from .models import Question
+from django.urls import path
+from .views import CategoryList, CategoryDetail, QuizDetail
 
-router = routers.DefaultRouter()
-router.register('category', CategoryView)
-router.register('quizzes', QuizView)
-router.register('question', QuestionView)
+
 
 
 urlpatterns = [
     path('_nested_admin/', include('nested_admin.urls')),
+    path("", CategoryList.as_view(), name="category" ),
+    path("<category>", CategoryDetail.as_view(), name="category-detail" ),
+    # path("<category>/<title>", QuizDetail.as_view(), name="question" ),
+    path("<category>/<title>", QuizDetail.as_view(), name="question" ),
 ]
-
-urlpatterns += router.urls
