@@ -10,7 +10,6 @@ router.register('question', QuestionView)
 
 
 urlpatterns = [
-    # ...
     path('_nested_admin/', include('nested_admin.urls')),
 ]
 
